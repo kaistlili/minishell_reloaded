@@ -15,7 +15,10 @@
 # define FT_PARSING_H
 
 #include "minishell.h"
-
+/*
+	src/ft_parser.c
+	src/tree_tools.c
+*/
 
 typedef enum	e_node_type
 {
