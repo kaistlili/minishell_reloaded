@@ -23,7 +23,7 @@
 # define SYNERR 2
 # define ENVERR 3
 # define ACCERR 4
-
+# define INCOMP 5
 typedef	struct			s_command
 {
 	char 				**args;

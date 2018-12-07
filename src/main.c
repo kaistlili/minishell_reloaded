@@ -86,7 +86,7 @@ int		exec_loop(t_command *command_lst)
 	}
 	return (0);
 }
-
+/*
 void	print_tree(t_tree *node)
 {
 	char *ssep = "SEP";
@@ -114,7 +114,7 @@ void	print_tree(t_tree *node)
 		write(1, "\n", 1);
 	lvl--;
 }
-
+*/
 int	main(int ac, char **av, char **env)
 {
 	char 		*line;
@@ -136,19 +136,21 @@ int	main(int ac, char **av, char **env)
 	{
 		if ((ret = ft_build_tree(line, tree_head)) != 0)
 			dispatch_parse_err(ret);
-		ft_printf("Tree buillt!\n");
-		print_tree(*tree_head);
-		*tree_head = NULL;
-	/*	else if ((ret == MEMERR) 
-				|| (ret = exec_loop(*command_lst) == MEMERR))
-			break;
-		free_cmdlst(*command_lst);*/
 		free(line);	
+		ft_printf("Tree buillt! checking syntax ...\n");
+		ret = assert_syntax(*tree_head, 0);
+		if (ret != 0)
+			ft_printf("Syntax error\n");
+	//	print_tree(*tree_head);
+		else
+			eval_tree(*tree_head);
+		free_tree(*tree_head);
+		*tree_head = NULL;
 //		*command_lst = NULL;
 		show_prompt();
 	}
 	free(line);
-	free(command_lst);
+	free(*tree_head);
 	write(1, "\n", 1);
 	return (ret);	
 }

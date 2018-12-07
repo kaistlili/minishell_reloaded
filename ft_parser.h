@@ -15,10 +15,10 @@
 # define FT_PARSING_H
 
 #include "minishell.h"
-/*
-	src/ft_parser.c
-	src/tree_tools.c
-*/
+
+#define CMD 2
+#define SEP 1
+#define PIPE 0
 
 typedef enum	e_node_type
 {
@@ -32,10 +32,16 @@ typedef struct	s_tree
 	struct s_tree	*left;
 	struct s_tree	*right;
 }				t_tree;
-
+//tree building
 int	ft_build_tree(char *line, t_tree **tree);
 t_tree	*tr_new_node(int type);
 int add_cmd(t_tree *node, t_tree **head);
 int add_pipe(t_tree *node, t_tree **head);
 int add_sep(t_tree *node, t_tree **head);
+//syntax.c
+int	assert_syntax(t_tree *head, int level);
+// eval.c
+int	eval_tree(t_tree *tree);
+//util
+void free_tree(t_tree *head);
 #endif
