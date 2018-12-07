@@ -31,7 +31,8 @@ int	add_cmd(t_tree *node, t_tree **head)
 	while (insert_pos->right != NULL)
 		insert_pos = insert_pos->right;
 	if ((*head)->type == cmd) //redundant ?
-		return(SYNERR);
+{ft_printf("parser broken add_cmd trying to add cmd to cmd");exit(1);
+		return(SYNERR);}
 	insert_pos->right = node;
 	return (0);
 }
@@ -40,8 +41,8 @@ int	add_pipe(t_tree *node, t_tree **head)
 {
 	if ((*head)->type == sep)
 	{
-		if ((*head)->right == NULL)
-			return (SYNERR);
+//		if ((*head)->right == NULL)
+//			return (SYNERR);
 		node->left = (*head)->right;
 		(*head)->right = node;
 	}

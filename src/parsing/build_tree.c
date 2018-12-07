@@ -17,6 +17,7 @@ t_tree	*parse_cmd(char *line, size_t *index)
 {
 	size_t start;
 	char *cmd_line;
+	char **split;
 	t_tree	*new;
 
 	start = *index;
@@ -35,8 +36,11 @@ t_tree	*parse_cmd(char *line, size_t *index)
 		return (NULL);
 	}
 	new->type = cmd;
-	new->data = new_cmd_node(cmd_line);
+	if (!(split = ft_splitblanks(cmd_line)))
+		return (NULL);
 	free(cmd_line);
+	new->data = new_cmd_node(split);
+	free_tab(split);
 //	if (new->data == NULL) we get confused with malloc errors here
 //		return (NULL);
 	return (new);

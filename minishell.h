@@ -24,6 +24,13 @@
 # define ENVERR 3
 # define ACCERR 4
 # define INCOMP 5
+
+
+#define	CREG "\x1B[0m"
+#define	CRED "\x1B[31m"
+#define CGREEN "\x1B[32m"
+#define	CBLUE "\x1B[34m"
+
 typedef	struct			s_command
 {
 	char 				**args;
@@ -57,7 +64,7 @@ void		free_tab(char **tab);
 void		free_tab_bytes(char **tab);
 char		**dup_tab(char **tab);
 char		**dup_ntab(char **tab, size_t n);
-t_command	*new_cmd_node(char *cmd_line);
+t_command	*new_cmd_node(char **split);
 void		add_cmdlst(t_command **head, t_command *to_add);
 void		free_cmdlst(t_command *command_lst);
 void		putstr_stderr(char *str);

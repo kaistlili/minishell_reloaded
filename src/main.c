@@ -33,10 +33,14 @@ static void		show_prompt(void)
 	pwd = handle_pwd_l();
 	if (pwd != NULL)
 	{
+		ft_putstr(CRED);
 		ft_printf("%s", pwd);
+		ft_putstr(CREG);
 		free(pwd);
-	}	
+	}
+	ft_putstr(CBLUE);
 	write(1, "$> ", 3);
+	ft_putstr(CREG);
 }
 
 int		init_g_env(char **env)

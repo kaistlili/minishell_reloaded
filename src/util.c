@@ -106,7 +106,7 @@ void		add_cmdlst(t_command **head, t_command *to_add)
 	tmp->next = to_add;
 	to_add->previous = tmp;
 }
-/*
+
 t_command	*new_cmd_node(char **space_split)
 {
 	t_command	*new;
@@ -119,7 +119,7 @@ t_command	*new_cmd_node(char **space_split)
 		new->args = dup_tab(space_split);
 	return (new);
 }
-*/
+
 
 size_t	tablen(char **split)
 {
@@ -130,13 +130,13 @@ size_t	tablen(char **split)
 		len++;
 	return (len);
 }
-
+/*
 t_command	*new_cmd_node(char *cmd_line)
 {
 	t_command	*new;
 	char		**split;
 
-	split = ft_splitblanks(cmd_line);
+			split = ft_splitblanks(cmd_line);
 	new = ft_memalloc(sizeof(t_command));
 	if ((new == NULL) || (split == NULL))
 		return (NULL);
@@ -144,7 +144,7 @@ t_command	*new_cmd_node(char *cmd_line)
 	new->agcount = tablen(split);
 	return (new);
 }
-
+*/
 char	**dup_tab(char **tab)
 {
 	size_t	len;

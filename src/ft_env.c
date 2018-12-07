@@ -112,9 +112,8 @@ int	spawn_new_env(char **args, char **new_env)
 {
 	t_command	*new_cmd;
 	int			ret;
-(void)args;	
-//	new_cmd = new_cmd_node(args);
-	new_cmd = NULL;
+
+	new_cmd = new_cmd_node(args);
 	if (new_cmd == NULL)
 		return (MEMERR);
 	new_cmd->process_env = new_env;
